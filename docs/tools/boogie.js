@@ -2,7 +2,20 @@ const form = document.querySelector('.my-form');
 const btns = document.querySelectorAll(".my-form button");
 const resultPrompts = document.getElementById("result-prompts");
 const resultStrengths = document.getElementById("result-strengths");
+const resultContainer = document.getElementById("result-container");
 
+
+function hideResults() {
+  if(resultContainer.style.display == '') {
+    resultContainer.style.display = 'none';
+  }
+}
+
+function showResults() {
+  if(resultContainer.style.display == 'none') {
+    resultContainer.style.display = '';
+  }
+}
 
 function calculateBeatFrames(secondsPerBeat, fps, totalFrames) {
   const beatFrames = [0];
@@ -90,15 +103,12 @@ function submitForm(event) {
 
   const splitPrompts = data['prompts'].value.split('\n');
 
-  // if (splitPrompts.length !== beatFrames.length) {
-  //   alert(`Number of prompts (${splitPrompts.length}) does not match number of keyframes (${beatFrames.length})`);
-  // }
-
   const promptFrames = calculatePromptFrames(splitPrompts, beatFrames, 1);
   
   const strengths = calculateStrengths(beatFrames, data['high-strength'].value, data['low-strength'].value, parseInt(data['hold-frames'].value));
 
   displayResults(promptFrames, strengths);
+  showResults();
 }
 
 form.addEventListener('submit', submitForm);

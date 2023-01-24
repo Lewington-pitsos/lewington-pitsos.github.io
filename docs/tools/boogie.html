@@ -41,7 +41,7 @@
               </span>
               <span class="front">CALCULATE</span>
             </button>
-            <button class="btn-grid" type="reset">
+            <button class="btn-grid" type="reset" onClick="hideResults()">
               <span class="back">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
               </span>
@@ -52,7 +52,7 @@
       </ul>
     </div>
   </form>
-  <div class="container">
+  <div class="container" id="result-container" style="display: none;">
     <h1>Results</h1>
 
     <h3>Prompts</h3>
