@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boogie</title>
+  <link rel="stylesheet" href="../index.css">
+  <script src="boogie.js" defer></script>
+
+</head>
+
+<body>
+  <form class="my-form">
+    <div class="container">
+      <h1>Boogie</h1>
+      <ul>
+        <li>
+          <div class="grid grid-3">
+            <span><label for="fps">Frames Per Second</label><input id="" name="fps" type="number" value="24" min="1" required></span>
+            <span><label for="total-frames">Total Frames</label><input id="total-frames" name="total-frames" type="number" value="240" min="1" required></span>
+            <span><label for="bpm">Beats Per Minute</label><input id="bpm" name="bpm" type="number" value="112" min="1" required></span>
+          </div>
+        </li>
+        <li>
+          <div class="grid grid-3">
+            <span><label for="high-strength">High Strength</label> <input id="high-strength" type="number" value="0.8" min="0" max="1" step="0.01" required></span>
+            <span><label for="low-strength">Low Strength</label> <input id="low-strength" type="number" value="0.05" min="0" max="1" step="0.01" required></span>
+            <span><label for="hold-frames">Hold Frames</label><input id="hold-frames" type="number" value="4" min="0" max="100" required></span>
+          </div>
+        </li>    
+        <li>
+          <textarea id="prompts" placeholder="Prompts" rows="12" required></textarea>
+        </li>   
+        <li>
+          <div class="grid grid-3">
+            <div class="required-msg">REQUIRED FIELDS</div>
+            <button class="btn-grid" type="submit">
+              <span class="back">
+                BOOGIE!
+              </span>
+              <span class="front">CALCULATE</span>
+            </button>
+            <button class="btn-grid" type="reset">
+              <span class="back">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
+              </span>
+              <span class="front">RESET</span>
+            </button> 
+          </div>
+        </li>    
+      </ul>
+    </div>
+  </form>
+  <div class="container">
+    <h1>Results</h1>
+
+    <h3>Prompts</h3>
+    <div class="result-holder">
+      <button class="copy-click" onClick="copyClipboard('result-prompts')">Copy</button>
+      <code id="result-prompts" class="prettyprint">{<br/>
+    "0": "a big red dog",<br/>
+    "17": "a big red dog running amok around town",<br/>
+    "33": "a big red dog being scolded by his owner"<br/>}</code>
+    </div>
+
+    <h3>Strengths</h3>
+    <div class="result-holder">
+      <button class="copy-click" onClick="copyClipboard('result-strengths')">Copy</button>
+      <code id="result-strengths" class="prettyprint">0:(0.8), 16:(0.05)</code>
+    </div>
+
+  </div>
+
+
+
+</form>
+
+</body>
+</html>
+
