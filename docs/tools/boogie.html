@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boogie</title>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
   <link rel="stylesheet" href="../index.css">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W3EJLRSJK"></script>
@@ -24,11 +25,14 @@
   <form class="my-form">
     <div id="snackbar">Calculation complete, see results...</div>
     <div class="container">
-      <h1>Boogie</h1>
+      <div class="grid grid-2 header">
+        <h1>Boogie</h1>
+        <a class="back-button" href="../index.html">Home</a>
+      </div>
       <ul>
         <li>
           <div class="grid grid-3">
-            <span><label for="mode">Mode</label>
+            <span title="Hold: the animation is fluid by default holds still on each beat for a few frames. Skip: the animation sticks to mostly the same image by default and 'skips' to a completely new image on each beat."><label for="mode">Mode 🛈</label>
               <select id="mode-select" name="mode" onchange="handleModeChange(this)">
                 <option value="hold" selected>Hold</option>
                 <option value="skip">Skip</option>

@@ -25,6 +25,12 @@
 
 }
 
+
+
+.back-button {
+  text-align: end;
+}
+
 /* RESET RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 :root {
@@ -98,7 +104,7 @@ body {
 
 /* FORM ELEMENTS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.container h1 {
+.container .header {
   margin-bottom: 1.5rem;
 }
 

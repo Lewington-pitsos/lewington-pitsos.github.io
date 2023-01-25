@@ -7,6 +7,10 @@ const modeSelector = document.getElementById("mode-select");
 const holdFrames = document.getElementById("hold-frames-container");
 const zoomHolder = document.getElementById("zoom-holder");
 const snackbar = document.getElementById("snackbar");
+const highStrength = document.getElementById("high-strength");
+const lowStrength = document.getElementById("low-strength");
+
+
 
 
 function showSnackBar() {
@@ -33,9 +37,13 @@ function handleModeChange(selector) {
   if (selector.value == "hold") {
     holdFrames.style.display = "";
     zoomHolder.innerHTML = "0:(1.003)"
+    highStrength.value = 0.8;
+    highStrength.value = 0.15;
   } else if (selector.value == "skip") {
+    highStrength.value = 0.65;
+    lowStrength.value = 0.1;
     holdFrames.style.display = "none";
-    zoomHolder.innerHTML = "0:(1.1)"
+    zoomHolder.innerHTML = "0:(0.95)"
   }
 }
 
