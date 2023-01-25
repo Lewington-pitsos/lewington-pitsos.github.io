@@ -11,7 +11,7 @@ const snackbar = document.getElementById("snackbar");
 
 function showSnackBar() {
   snackbar.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
 
 
@@ -32,10 +32,10 @@ function handleModeChange(selector) {
   hideResults();
   if (selector.value == "hold") {
     holdFrames.style.display = "";
-    zoomHolder.innerHTML = "1.005"
+    zoomHolder.innerHTML = "0:(1.003)"
   } else if (selector.value == "skip") {
     holdFrames.style.display = "none";
-    zoomHolder.innerHTML = "1.1"
+    zoomHolder.innerHTML = "0:(1.1)"
   }
 }
 

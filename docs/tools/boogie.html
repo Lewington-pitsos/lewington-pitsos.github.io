@@ -37,7 +37,7 @@
         </li>
         <li>
           <div class="grid grid-3">
-            <span><label for="fps">Frames Per Second</label><input id="" name="fps" type="number" value="24" min="1" required></span>
+            <span><label for="fps">Frames Per Second</label><input id="" name="fps" type="number" value="48" min="1" required></span>
             <span><label for="total-frames">Total Frames</label><input id="total-frames" name="total-frames" type="number" value="240" min="1" required></span>
             <span><label for="bpm">Beats Per Minute</label><input id="bpm" name="bpm" type="number" value="112" min="1" required></span>
           </div>
@@ -45,8 +45,8 @@
         <li>
           <div class="grid grid-3">
             <span><label for="high-strength">High Strength</label> <input id="high-strength" type="number" value="0.8" min="0" max="1" step="0.01" required></span>
-            <span><label for="low-strength">Low Strength</label> <input id="low-strength" type="number" value="0.05" min="0" max="1" step="0.01" required></span>
-            <span id="hold-frames-container"><label for="hold-frames">Hold Frames</label><input id="hold-frames" type="number" value="4" min="0" max="100" required></span>
+            <span><label for="low-strength">Low Strength</label> <input id="low-strength" type="number" value="0.15" min="0" max="1" step="0.01" required></span>
+            <span id="hold-frames-container"><label for="hold-frames">Hold Frames</label><input id="hold-frames" type="number" value="7" min="0" max="100" required></span>
           </div>
         </li>    
         <li>
@@ -78,7 +78,7 @@
     <h3>Recommended Zoom:</h3>
     <div class="result-holder">
       <button class="copy-click" onClick="copyClipboard('zoom-holder')">Copy</button>
-      <code id="zoom-holder" class="prettyprint">0.001</code>
+      <code id="zoom-holder" class="prettyprint">0:(1.003)</code>
     </div>
 
     <h3>Prompts</h3>
