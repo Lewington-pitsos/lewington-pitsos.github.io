@@ -73,13 +73,13 @@ function calculateStrengths(beatFrames, highStrength, lowStrength, holdFrames) {
 }
 
 function displayResults(promptFrames, strengths) {
-  var promptRep = "{<br/>"
+  var promptRep = "{<br>"
   for (const [key, value] of Object.entries(promptFrames)) {
     console.log(key, value);
-    promptRep += `"${key}": "${value}",\n<br/>`
+    promptRep += `"${key}": "${value}",\n<br>`
   }
 
-  promptRep = promptRep.slice(0, promptRep.length-7)+"<br/>";
+  promptRep = promptRep.slice(0, promptRep.length-6)+"<br>";
   promptRep += "}"
   resultPrompts.innerHTML = promptRep;
 
@@ -116,5 +116,6 @@ form.addEventListener('submit', submitForm);
 
 function copyClipboard(id) {
   const element = document.getElementById(id);
-  navigator.clipboard.writeText(element.innerHTML.replace("<br/>", ""));
+  console.log(element.innerHTML);
+  navigator.clipboard.writeText(element.innerHTML.replace(/<br>/g, ""));
 }
