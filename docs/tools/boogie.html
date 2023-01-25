@@ -22,9 +22,19 @@
 
 <body>
   <form class="my-form">
+    <div id="snackbar">Calculation complete, see results...</div>
     <div class="container">
       <h1>Boogie</h1>
       <ul>
+        <li>
+          <div class="grid grid-3">
+            <span><label for="mode">Mode</label>
+              <select id="mode-select" name="mode" onchange="handleModeChange(this)">
+                <option value="hold" selected>Hold</option>
+                <option value="skip">Skip</option>
+              </select>
+          </div>
+        </li>
         <li>
           <div class="grid grid-3">
             <span><label for="fps">Frames Per Second</label><input id="" name="fps" type="number" value="24" min="1" required></span>
@@ -36,11 +46,11 @@
           <div class="grid grid-3">
             <span><label for="high-strength">High Strength</label> <input id="high-strength" type="number" value="0.8" min="0" max="1" step="0.01" required></span>
             <span><label for="low-strength">Low Strength</label> <input id="low-strength" type="number" value="0.05" min="0" max="1" step="0.01" required></span>
-            <span><label for="hold-frames">Hold Frames</label><input id="hold-frames" type="number" value="4" min="0" max="100" required></span>
+            <span id="hold-frames-container"><label for="hold-frames">Hold Frames</label><input id="hold-frames" type="number" value="4" min="0" max="100" required></span>
           </div>
         </li>    
         <li>
-          <textarea id="prompts" placeholder="Prompts" rows="12" required></textarea>
+          <textarea id="prompts" placeholder="Prompts" rows="5" required></textarea>
         </li>   
         <li>
           <div class="grid grid-3">
@@ -65,6 +75,12 @@
   <div class="container" id="result-container" style="display: none;">
     <h1>Results</h1>
 
+    <h3>Recommended Zoom:</h3>
+    <div class="result-holder">
+      <button class="copy-click" onClick="copyClipboard('zoom-holder')">Copy</button>
+      <code id="zoom-holder" class="prettyprint">0.001</code>
+    </div>
+
     <h3>Prompts</h3>
     <div class="result-holder">
       <button class="copy-click" onClick="copyClipboard('result-prompts')">Copy</button>
@@ -79,7 +95,6 @@
       <button class="copy-click" onClick="copyClipboard('result-strengths')">Copy</button>
       <code id="result-strengths" class="prettyprint">0:(0.8), 16:(0.05)</code>
     </div>
-
   </div>
 
 

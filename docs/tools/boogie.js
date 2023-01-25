@@ -3,6 +3,16 @@ const btns = document.querySelectorAll(".my-form button");
 const resultPrompts = document.getElementById("result-prompts");
 const resultStrengths = document.getElementById("result-strengths");
 const resultContainer = document.getElementById("result-container");
+const modeSelector = document.getElementById("mode-select");
+const holdFrames = document.getElementById("hold-frames-container");
+const zoomHolder = document.getElementById("zoom-holder");
+const snackbar = document.getElementById("snackbar");
+
+
+function showSnackBar() {
+  snackbar.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
 
 
 function hideResults() {
@@ -14,6 +24,18 @@ function hideResults() {
 function showResults() {
   if(resultContainer.style.display == 'none') {
     resultContainer.style.display = '';
+  }
+}
+
+function handleModeChange(selector) {
+  
+  hideResults();
+  if (selector.value == "hold") {
+    holdFrames.style.display = "";
+    zoomHolder.innerHTML = "1.005"
+  } else if (selector.value == "skip") {
+    holdFrames.style.display = "none";
+    zoomHolder.innerHTML = "1.1"
   }
 }
 
@@ -55,6 +77,19 @@ function calculatePromptFrames(prompts, frames, framesPerPrompt) {
 }
 
 
+function calculateSkipStrengths(beatFrames, highStrength, lowStrength) {
+  const strengths = []
+
+  for (let index = 0; index < beatFrames.length; index++) {
+    const frame = beatFrames[index];
+    
+    strengths.push([frame, lowStrength]);
+    strengths.push([frame + 1, highStrength]);
+  }  
+
+  return strengths;
+}
+
 function calculateStrengths(beatFrames, highStrength, lowStrength, holdFrames) {
   const strengths = []
 
@@ -75,7 +110,6 @@ function calculateStrengths(beatFrames, highStrength, lowStrength, holdFrames) {
 function displayResults(promptFrames, strengths) {
   var promptRep = "{<br>"
   for (const [key, value] of Object.entries(promptFrames)) {
-    console.log(key, value);
     promptRep += `"${key}": "${value}",\n<br>`
   }
 
@@ -99,16 +133,22 @@ function submitForm(event) {
 
   const beatFrames = calculateBeatFrames(secondsPerBeat, data['fps'].value, data['total-frames'].value);
 
-  console.log(beatFrames);
-
   const splitPrompts = data['prompts'].value.split('\n');
 
   const promptFrames = calculatePromptFrames(splitPrompts, beatFrames, 1);
   
-  const strengths = calculateStrengths(beatFrames, data['high-strength'].value, data['low-strength'].value, parseInt(data['hold-frames'].value));
+  console.log(data['mode'].value)
+
+  var strengths;
+  if (data['mode'].value == "skip") {
+    strengths = calculateSkipStrengths(beatFrames, data['high-strength'].value, data['low-strength'].value);
+  } else {
+    strengths = calculateStrengths(beatFrames, data['high-strength'].value, data['low-strength'].value, parseInt(data['hold-frames'].value));
+  }
 
   displayResults(promptFrames, strengths);
   showResults();
+  showSnackBar(); 
 }
 
 form.addEventListener('submit', submitForm);
@@ -116,6 +156,5 @@ form.addEventListener('submit', submitForm);
 
 function copyClipboard(id) {
   const element = document.getElementById(id);
-  console.log(element.innerHTML);
   navigator.clipboard.writeText(element.innerHTML.replace(/<br>/g, ""));
 }
