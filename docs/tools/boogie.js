@@ -104,9 +104,6 @@ function calculateStrengths(beatFrames, highStrength, lowStrength, holdFrames) {
   for (let index = 0; index < beatFrames.length; index++) {
     const frame = beatFrames[index];
     
-    if (index > 0) { 
-      strengths.push([frame - 1, lowStrength]);
-    }
     strengths.push([frame, lowStrength]);
     strengths.push([frame + 1, highStrength]);
     strengths.push([frame + holdFrames, highStrength]);
