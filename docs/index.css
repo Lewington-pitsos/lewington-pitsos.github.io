@@ -113,7 +113,6 @@ body {
   font: 18px/1.5 "Open Sans", sans-serif;
   background: var(--bodyColor);
   color: var(--white);
-  margin: 1.5rem 0;
 }
 
 .container {
@@ -122,6 +121,30 @@ body {
   padding: 0 1.5rem;
 }
 
+
+#title-holder {
+  position: relative;
+}
+
+#title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#description {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  width: 25%;
+}
+
+
+
+#title h1 {
+  text-align: center;
+}
 
 /* FORM ELEMENTS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
